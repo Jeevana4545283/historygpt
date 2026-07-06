@@ -53,16 +53,24 @@ export class VectorStore {
     /**
      * Saves vectors to JSON file.
      */
-    public save() {
-        fs.writeFileSync(this.storageFile, JSON.stringify(this.vectors, null, 2), "utf-8");
+    /**
+     * Saves vectors to JSON file asynchronously.
+     */
+    public async save(): Promise<void> {
+        try {
+            await fs.promises.writeFile(this.storageFile, JSON.stringify(this.vectors, null, 2), "utf-8");
+        } catch (err) {
+            console.error("Failed to save vectors asynchronously:", err);
+            throw err;
+        }
     }
 
     /**
-     * Adds documents to the store and persists them.
+     * Adds documents to the store and persists them asynchronously.
      */
-    public addDocuments(docs: VectorDocument[]) {
+    public async addDocuments(docs: VectorDocument[]): Promise<void> {
         this.vectors.push(...docs);
-        this.save();
+        await this.save();
     }
 
     /**

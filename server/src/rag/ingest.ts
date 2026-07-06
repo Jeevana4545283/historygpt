@@ -4,6 +4,7 @@ import { DocumentLoader } from "./loaders/DocumentLoader";
 import { TextSplitter } from "./loaders/TextSplitter";
 import { EmbeddingService } from "./embeddings/EmbeddingService";
 import { VectorStore, VectorDocument } from "./vectorstore/VectorStore";
+import { CHARACTER_MAP } from "../utils/characterMap";
 
 export const ingestCharacter = async (characterName: string, dataDir: string) => {
     console.log(`Starting ingestion for ${characterName} from ${dataDir}...`);
@@ -52,28 +53,14 @@ export const ingestCharacter = async (characterName: string, dataDir: string) =>
 
     // 4. Save to Vector Store
     if (docsToAdd.length > 0) {
-        store.addDocuments(docsToAdd);
+        await store.addDocuments(docsToAdd);
         console.log(`Successfully ingested ${docsToAdd.length} vectors into the database.`);
     }
 };
 
 // Run ingestion for all characters
 const run = async () => {
-    const chars = {
-        'einstein': 'Albert Einstein',
-        'kalam': 'APJ Abdul Kalam',
-        'ambedkar': 'Dr. B. R. Ambedkar',
-        'shivaji': 'Shivaji Maharaj',
-        'vivekananda': 'Swami Vivekananda',
-        'tesla': 'Nikola Tesla',
-        'newton': 'Isaac Newton',
-        'ramanujan': 'Srinivasa Ramanujan',
-        'curie': 'Marie Curie',
-        'hawking': 'Stephen Hawking',
-        'gandhi': 'Mahatma Gandhi'
-    };
-    
-    for (const [folder, name] of Object.entries(chars)) {
+    for (const [name, folder] of Object.entries(CHARACTER_MAP)) {
         const dir = path.join(__dirname, "../../data", folder);
         await ingestCharacter(name, dir);
     }

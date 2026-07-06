@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { RetrievalService } from "./RetrievalService";
 import { generateResponse } from "../../services/openrouterService";
+import { getFolderFromCharacter } from "../../utils/characterMap";
 
 export class TimelineService {
     private retrievalService: RetrievalService;
@@ -11,21 +12,7 @@ export class TimelineService {
     }
 
     private getTimelinePath(characterName: string): string {
-        // Map character name back to folder name
-        const chars: Record<string, string> = {
-            'Albert Einstein': 'einstein',
-            'APJ Abdul Kalam': 'kalam',
-            'Dr. B. R. Ambedkar': 'ambedkar',
-            'Shivaji Maharaj': 'shivaji',
-            'Swami Vivekananda': 'vivekananda',
-            'Nikola Tesla': 'tesla',
-            'Isaac Newton': 'newton',
-            'Srinivasa Ramanujan': 'ramanujan',
-            'Marie Curie': 'curie',
-            'Stephen Hawking': 'hawking',
-            'Mahatma Gandhi': 'gandhi'
-        };
-        const folder = chars[characterName] || characterName.toLowerCase().replace(/\s+/g, "");
+        const folder = getFolderFromCharacter(characterName);
         return path.join(__dirname, "../../../data", folder, "timeline.json");
     }
 

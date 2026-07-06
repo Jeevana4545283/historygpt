@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import multer from "multer";
 import { ingestCharacter } from "../rag/ingest";
+import { getFolderFromCharacter } from "../utils/characterMap";
 
 // Configure multer storage
 const storage = multer.diskStorage({
@@ -12,20 +13,7 @@ const storage = multer.diskStorage({
             return cb(new Error("Character is required"), "");
         }
         
-        const chars: Record<string, string> = {
-            'Albert Einstein': 'einstein',
-            'APJ Abdul Kalam': 'kalam',
-            'Dr. B. R. Ambedkar': 'ambedkar',
-            'Shivaji Maharaj': 'shivaji',
-            'Swami Vivekananda': 'vivekananda',
-            'Nikola Tesla': 'tesla',
-            'Isaac Newton': 'newton',
-            'Srinivasa Ramanujan': 'ramanujan',
-            'Marie Curie': 'curie',
-            'Stephen Hawking': 'hawking',
-            'Mahatma Gandhi': 'gandhi'
-        };
-        const folder = chars[character] || character.toLowerCase().replace(/\s+/g, "");
+        const folder = getFolderFromCharacter(character);
         const dir = path.join(__dirname, "../../../data", folder);
         
         if (!fs.existsSync(dir)) {
@@ -97,20 +85,7 @@ export const getMedia = async (req: Request, res: Response) => {
         const { character } = req.params;
         if (!character || typeof character !== "string") return res.status(400).json({ success: false, message: "Character required" });
 
-        const chars: Record<string, string> = {
-            'Albert Einstein': 'einstein',
-            'APJ Abdul Kalam': 'kalam',
-            'Dr. B. R. Ambedkar': 'ambedkar',
-            'Shivaji Maharaj': 'shivaji',
-            'Swami Vivekananda': 'vivekananda',
-            'Nikola Tesla': 'tesla',
-            'Isaac Newton': 'newton',
-            'Srinivasa Ramanujan': 'ramanujan',
-            'Marie Curie': 'curie',
-            'Stephen Hawking': 'hawking',
-            'Mahatma Gandhi': 'gandhi'
-        };
-        const folder = chars[character] || character.toLowerCase().replace(/\s+/g, "");
+        const folder = getFolderFromCharacter(character);
         const dir = path.join(__dirname, "../../../data", folder);
 
         if (!fs.existsSync(dir)) {
