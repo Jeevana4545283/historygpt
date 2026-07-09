@@ -5,7 +5,7 @@ interface OrbCenterpieceProps {
     className?: string;
 }
 
-export const OrbCenterpiece = ({ type = "energy", className = "" }: OrbCenterpieceProps) => {
+export const OrbCenterpiece = ({ className = "" }: OrbCenterpieceProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [hasWebGL, setHasWebGL] = useState(true);
 
