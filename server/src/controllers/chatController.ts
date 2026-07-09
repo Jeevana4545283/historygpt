@@ -14,7 +14,10 @@ export const handleChat = async (req: Request, res: Response) => {
             return res.status(400).json({ success: false, message: "Character and prompt are required" });
         }
 
+        const startTime = Date.now();
         const contextData = await retrievalService.retrieveContext(character, prompt);
+        const retrievalTime = Date.now() - startTime;
+        console.log(`[PERF] Context retrieval took ${retrievalTime}ms`);
 
         const systemMessage = {
             role: "system",
@@ -28,7 +31,10 @@ export const handleChat = async (req: Request, res: Response) => {
 
         const messages = [systemMessage, ...history, userMessage];
 
+        const llmStartTime = Date.now();
         const reply = await generateResponse(messages);
+        const llmTime = Date.now() - llmStartTime;
+        console.log(`[PERF] LLM completion took ${llmTime}ms`);
 
         res.json({ success: true, reply, sources: contextData.sources });
     } catch (error: any) {

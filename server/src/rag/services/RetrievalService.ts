@@ -11,24 +11,36 @@ export class RetrievalService {
     }
 
     /**
-     * Retrieves the top 5 relevant context chunks for a given character and query.
+     * Retrieves the top relevant distinct context chunks for a given character and query.
      */
-    async retrieveContext(character: string, query: string, topK: number = 5): Promise<{ text: string, sources: any[] }> {
+    async retrieveContext(character: string, query: string, topK: number = 3): Promise<{ text: string, sources: any[] }> {
         try {
             // 1. Generate query embedding
             const queryEmbedding = await this.embeddingService.generateEmbedding(query);
 
-            // 2. Search vector store with character filter
-            const results = this.vectorStore.search(queryEmbedding, { character }, topK);
+            // 2. Search vector store (retrieve slightly more to allow distinct filtering)
+            const results = this.vectorStore.search(queryEmbedding, { character }, topK + 2);
 
-            // 3. Combine retrieved text
-            if (results.length === 0) {
+            // 3. Filter out duplicate or near-duplicate text chunks
+            const uniqueResults: typeof results = [];
+            const seenTexts = new Set<string>();
+            for (const r of results) {
+                const normText = r.text.trim().toLowerCase();
+                if (!seenTexts.has(normText)) {
+                    seenTexts.add(normText);
+                    uniqueResults.push(r);
+                }
+                if (uniqueResults.length >= topK) break;
+            }
+
+            // 4. Combine retrieved text
+            if (uniqueResults.length === 0) {
                 return { text: "", sources: [] };
             }
 
-            const contextText = results.map((r, i) => `[Source ${i + 1}: ${r.metadata.source}]\n${r.text}`).join("\n\n");
+            const contextText = uniqueResults.map((r, i) => `[Source ${i + 1}: ${r.metadata.source}]\n${r.text}`).join("\n\n");
             
-            const sources = results.map(r => ({
+            const sources = uniqueResults.map(r => ({
                 source: r.metadata.source,
                 chunkId: r.id,
                 document: r.text

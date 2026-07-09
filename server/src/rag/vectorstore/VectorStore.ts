@@ -34,13 +34,28 @@ export class VectorStore {
     }
 
     /**
-     * Loads vectors from JSON file.
+     * Loads vectors from JSON file and deduplicates them.
      */
     private load() {
         if (fs.existsSync(this.storageFile)) {
             try {
                 const data = fs.readFileSync(this.storageFile, "utf-8");
-                this.vectors = JSON.parse(data);
+                const rawVectors: VectorDocument[] = JSON.parse(data);
+                
+                const seen = new Set<string>();
+                this.vectors = [];
+                for (const vec of rawVectors) {
+                    const key = `${vec.metadata.character || ""}:${vec.text}`;
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        this.vectors.push(vec);
+                    }
+                }
+                
+                if (this.vectors.length < rawVectors.length) {
+                    console.log(`[DEDUPLICATE] Removed ${rawVectors.length - this.vectors.length} duplicate vectors from database.`);
+                    fs.writeFileSync(this.storageFile, JSON.stringify(this.vectors, null, 2), "utf-8");
+                }
             } catch (err) {
                 console.error("Failed to load vectors:", err);
             }
@@ -50,9 +65,6 @@ export class VectorStore {
         }
     }
 
-    /**
-     * Saves vectors to JSON file.
-     */
     /**
      * Saves vectors to JSON file asynchronously.
      */
@@ -66,11 +78,24 @@ export class VectorStore {
     }
 
     /**
-     * Adds documents to the store and persists them asynchronously.
+     * Adds documents to the store and persists them asynchronously, filtering out duplicates.
      */
     public async addDocuments(docs: VectorDocument[]): Promise<void> {
-        this.vectors.push(...docs);
-        await this.save();
+        const existingKeys = new Set(this.vectors.map(vec => `${vec.metadata.character || ""}:${vec.text}`));
+        const newDocs = docs.filter(doc => {
+            const key = `${doc.metadata.character || ""}:${doc.text}`;
+            if (existingKeys.has(key)) return false;
+            existingKeys.add(key);
+            return true;
+        });
+
+        if (newDocs.length > 0) {
+            this.vectors.push(...newDocs);
+            await this.save();
+            console.log(`[VECTORSTORE] Added ${newDocs.length} new vectors (skipped ${docs.length - newDocs.length} duplicates).`);
+        } else {
+            console.log("[VECTORSTORE] No new vectors to add (all were duplicates).");
+        }
     }
 
     /**
