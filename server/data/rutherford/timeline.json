@@ -1,0 +1,37 @@
+[
+  {
+    "year": "1899",
+    "title": "Radiation Discoveries",
+    "description": "Rutherford discovered and named alpha and beta radiation, studying their differing penetrating powers."
+  },
+  {
+    "year": "1907",
+    "title": "Radon Characterization",
+    "description": "While working at McGill University, he characterized and identified the radioactive noble gas, Radon."
+  },
+  {
+    "year": "1908",
+    "title": "Nobel Prize in Chemistry",
+    "description": "Awarded the Nobel Prize in Chemistry for his investigations into the disintegration of elements and the chemistry of radioactive substances."
+  },
+  {
+    "year": "1911",
+    "title": "Gold Foil Experiment",
+    "description": "Formulated the Rutherford nuclear atomic model after directing the Geiger-Marsden gold foil scattering experiment, discovering the nucleus."
+  },
+  {
+    "year": "1919",
+    "title": "First Artificial Nuclear Fission",
+    "description": "Succeeded in transforming nitrogen atoms into oxygen atoms by bombarding them with alpha particles, initiating the field of modern nuclear reactions."
+  },
+  {
+    "year": "1920",
+    "title": "Named the Proton",
+    "description": "Postulated the existence of the proton as the fundamental positive charge building block, naming the hydrogen nucleus."
+  },
+  {
+    "year": "1937",
+    "title": "Death",
+    "description": "Rutherford passed away in London and was laid to rest in Westminster Abbey near Newton and Kelvin."
+  }
+]

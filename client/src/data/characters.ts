@@ -220,6 +220,30 @@ export const characters: Character[] = [
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Rosalind_Franklin_(1920-1958).jpg",
         quote: "Science and everyday life cannot and should not be separated."
     },
+    {
+        name: "J. J. Thomson",
+        role: "Physicist",
+        subtitle: "Discovery of the Electron",
+        category: "Scientists",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/J.J._Thomson.jpg",
+        quote: "To the electron: may it never be of any use to anybody!"
+    },
+    {
+        name: "Ernest Rutherford",
+        role: "Physicist",
+        subtitle: "Father of Nuclear Physics",
+        category: "Scientists",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ernest_Rutherford_1908.jpg",
+        quote: "All science is either physics or stamp collecting."
+    },
+    {
+        name: "Eugen Goldstein",
+        role: "Physicist",
+        subtitle: "Discovery of Canal Rays & Protons",
+        category: "Scientists",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Eugen_Goldstein_1913.jpg",
+        quote: "As the rays of light travel in straight lines, so also do the rays of electricity."
+    },
 
     // Innovators / Tech Legends
     {

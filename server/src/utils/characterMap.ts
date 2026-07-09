@@ -13,7 +13,10 @@ export const CHARACTER_MAP: Record<string, string> = {
     'Srinivasa Ramanujan': 'ramanujan',
     'Marie Curie': 'curie',
     'Stephen Hawking': 'hawking',
-    'Mahatma Gandhi': 'gandhi'
+    'Mahatma Gandhi': 'gandhi',
+    'J. J. Thomson': 'thomson',
+    'Ernest Rutherford': 'rutherford',
+    'Eugen Goldstein': 'goldstein'
 };
 
 /**
