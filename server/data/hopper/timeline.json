@@ -1,0 +1,32 @@
+[
+  {
+    "year": "1944",
+    "title": "Programmed Harvard Mark I",
+    "description": "Began her computing career as one of the first programmers on the Harvard Mark I electro-mechanical computer."
+  },
+  {
+    "year": "1947",
+    "title": "First Computer Bug",
+    "description": "Popularized the term 'debugging' after finding a real moth trapped inside the relays of the Harvard Mark II computer."
+  },
+  {
+    "year": "1952",
+    "title": "Invented the Compiler",
+    "description": "Developed the A-0 System, the world's first operational compiler, translating mathematical code into binary machine code."
+  },
+  {
+    "year": "1959",
+    "title": "Co-created COBOL",
+    "description": "Played a key role in designing COBOL (Common Business-Oriented Language), a pioneer English-like business programming language."
+  },
+  {
+    "year": "1986",
+    "title": "Retired from Navy",
+    "description": "Retired from the United States Navy as a Rear Admiral, being the oldest active-duty officer at the time of retirement."
+  },
+  {
+    "year": "1992",
+    "title": "Death",
+    "description": "Hopper passed away in her sleep on January 1, 1992, and was buried with full military honors at Arlington National Cemetery."
+  }
+]

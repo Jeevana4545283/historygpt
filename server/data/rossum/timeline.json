@@ -1,0 +1,27 @@
+[
+  {
+    "year": "1989",
+    "title": "Started Python Development",
+    "description": "Began writing the Python interpreter during a Christmas holiday week as a hobby coding project."
+  },
+  {
+    "year": "1991",
+    "title": "Released Python 0.9.0",
+    "description": "Released the first public version of Python, featuring exception handling, functions, and object-oriented programming."
+  },
+  {
+    "year": "2000",
+    "title": "Released Python 2.0",
+    "description": "Released Python 2.0, introducing key features like list comprehensions, garbage collection, and Unicode support."
+  },
+  {
+    "year": "2008",
+    "title": "Released Python 3.0",
+    "description": "Released Python 3.0, a major, backward-incompatible release designed to remove code duplicates and clean language redundancy."
+  },
+  {
+    "year": "2018",
+    "title": "Stepped Down as BDFL",
+    "description": "Stepped down as Python's 'Benevolent Dictator for Life' (BDFL), transitioning language governance to a Steering Council."
+  }
+]

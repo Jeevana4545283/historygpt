@@ -1,0 +1,27 @@
+[
+  {
+    "year": "1991",
+    "title": "Created Linux Kernel",
+    "description": "Released version 0.01 of the Linux kernel as an open-source project, establishing a free alternative to UNIX systems."
+  },
+  {
+    "year": "1994",
+    "title": "Released Linux 1.0.0",
+    "description": "Released version 1.0.0 of the Linux kernel, marking its production readiness and viability for general computing."
+  },
+  {
+    "year": "2005",
+    "title": "Created Git Version Control",
+    "description": "Developed the Git distributed version control system in a few weeks to coordinate development of the Linux kernel."
+  },
+  {
+    "year": "2012",
+    "title": "Millennium Technology Prize",
+    "description": "Awarded the Millennium Technology Prize for creating the Linux kernel and advancing open-source software global access."
+  },
+  {
+    "year": "2018",
+    "title": "IEEE Computer Pioneer Award",
+    "description": "Received the IEEE Computer Society Computer Pioneer Award in recognition of pioneering open-source developments."
+  }
+]

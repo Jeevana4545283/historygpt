@@ -16,7 +16,12 @@ export const CHARACTER_MAP: Record<string, string> = {
     'Mahatma Gandhi': 'gandhi',
     'J. J. Thomson': 'thomson',
     'Ernest Rutherford': 'rutherford',
-    'Eugen Goldstein': 'goldstein'
+    'Eugen Goldstein': 'goldstein',
+    'Linus Torvalds': 'torvalds',
+    'Larry Page': 'page',
+    'Guido van Rossum': 'rossum',
+    'Grace Hopper': 'hopper',
+    'Mark Zuckerberg': 'zuckerberg'
 };
 
 /**

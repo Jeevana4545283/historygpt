@@ -1,0 +1,32 @@
+[
+  {
+    "year": "1996",
+    "title": "PageRank Development",
+    "description": "Developed the PageRank search ranking algorithm with Sergey Brin while completing his graduate studies at Stanford University."
+  },
+  {
+    "year": "1998",
+    "title": "Co-founded Google",
+    "description": "Co-founded Google Inc. with Sergey Brin, setting up Google's first workspace in a garage in Menlo Park."
+  },
+  {
+    "year": "2001",
+    "title": "PageRank Patent Granted",
+    "description": "Google was officially granted the patent for the PageRank link analysis algorithm, listing Page as the inventor."
+  },
+  {
+    "year": "2004",
+    "title": "Google IPO & Marconi Prize",
+    "description": "Google successfully completed its Initial Public Offering (IPO), and Page received the Marconi Prize with Brin."
+  },
+  {
+    "year": "2011",
+    "title": "Google CEO (Second Term)",
+    "description": "Returned as Chief Executive Officer of Google, leading the expansion into Android mobile platforms and hardware."
+  },
+  {
+    "year": "2015",
+    "title": "CEO of Alphabet Inc.",
+    "description": "Became CEO of Alphabet Inc., Google's newly formed parent company, overseeing deep tech investments."
+  }
+]

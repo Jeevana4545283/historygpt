@@ -285,5 +285,45 @@ export const characters: Character[] = [
         category: "Innovators",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo_da_Vinci_-_presumed_self-portrait_-_WGA12798.jpg",
         quote: "Learning never exhausts the mind."
+    },
+    {
+        name: "Linus Torvalds",
+        role: "Software Engineer",
+        subtitle: "Creator of Linux & Git",
+        category: "Innovators",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Linus_Torvalds_talks_about_Git_at_Google.jpg",
+        quote: "Talk is cheap. Show me the code."
+    },
+    {
+        name: "Larry Page",
+        role: "Entrepreneur & Computer Scientist",
+        subtitle: "Co-founder of Google",
+        category: "Innovators",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Larry_Page_in_2009.jpg",
+        quote: "Always deliver more than expected."
+    },
+    {
+        name: "Guido van Rossum",
+        role: "Software Developer",
+        subtitle: "Creator of Python",
+        category: "Innovators",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Guido_van_Rossum_OSCON_2006.jpg",
+        quote: "Python is an experiment in how much freedom programmers need."
+    },
+    {
+        name: "Grace Hopper",
+        role: "Computer Scientist & Navy Rear Admiral",
+        subtitle: "Pioneer of Compilers & COBOL",
+        category: "Innovators",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Grace_Hopper.jpg",
+        quote: "The most dangerous phrase in the language is, 'We've always done it this way.'"
+    },
+    {
+        name: "Mark Zuckerberg",
+        role: "Entrepreneur & Software Developer",
+        subtitle: "Co-founder of Facebook / Meta",
+        category: "Innovators",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mark_Zuckerberg_F8_2019_Keynote_-_Crop.jpg",
+        quote: "Move fast and break things."
     }
 ];
