@@ -14,15 +14,35 @@ interface Message {
 }
 
 const ChatPage = () => {
-    const [selectedLeaderName, setSelectedLeaderName] = useState(characters[0].name);
+    // Load selected character from localStorage on initialization
+    const [selectedLeaderName, setSelectedLeaderName] = useState(() => {
+        return localStorage.getItem("historygpt_selected_leader") || characters[0].name;
+    });
     
-    // Store conversation history individually for each character
-    const [conversations, setConversations] = useState<Record<string, Message[]>>({});
+    // Store conversation history individually for each character, loaded from localStorage
+    const [conversations, setConversations] = useState<Record<string, Message[]>>(() => {
+        try {
+            const cached = localStorage.getItem("historygpt_chats");
+            return cached ? JSON.parse(cached) : {};
+        } catch (e) {
+            console.error("Error loading chat history:", e);
+            return {};
+        }
+    });
     
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isUploadOpen, setIsUploadOpen] = useState(false);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
+    // Save conversations and selected character to localStorage
+    useEffect(() => {
+        localStorage.setItem("historygpt_chats", JSON.stringify(conversations));
+    }, [conversations]);
+
+    useEffect(() => {
+        localStorage.setItem("historygpt_selected_leader", selectedLeaderName);
+    }, [selectedLeaderName]);
 
     // Get current messages for selected character
     const messages = conversations[selectedLeaderName] || [];
