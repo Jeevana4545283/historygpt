@@ -12,7 +12,7 @@ export class VectorStore {
     private storageFile: string;
     private vectors: VectorDocument[] = [];
 
-    constructor(storagePath: string = path.join(__dirname, "../../data/vectors.json")) {
+    constructor(storagePath: string = path.join(process.cwd(), "src/data/vectors.json")) {
         this.storageFile = storagePath;
         this.load();
     }
