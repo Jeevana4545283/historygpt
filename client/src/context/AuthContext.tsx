@@ -30,16 +30,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 setUser(res.data.user);
                 localStorage.setItem("inspirebooks_token", res.data.token);
                 localStorage.setItem("inspirebooks_user", JSON.stringify(res.data.user));
+                setIsLoading(false);
+                return;
             }
         } catch (err) {
-            console.error("Auto guest session error:", err);
-        } finally {
-            setIsLoading(false);
+            console.log("Backend offline, initializing client guest session");
         }
+
+        // Local fallback guest user for standalone Vercel deployment
+        const localGuest: User = {
+            id: "usr-guest-local",
+            name: "Guest Reader",
+            email: "guest@inspirebooks.com",
+            avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80",
+            bio: "Reader on InspireBooks.",
+            role: "USER"
+        };
+        setToken("local-guest-token");
+        setUser(localGuest);
+        localStorage.setItem("inspirebooks_token", "local-guest-token");
+        localStorage.setItem("inspirebooks_user", JSON.stringify(localGuest));
+        setIsLoading(false);
     };
 
     useEffect(() => {
-        if (token) {
+        if (token && token !== "local-guest-token") {
             axios.get("/api/auth/me", {
                 headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
@@ -71,7 +86,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(null);
         localStorage.removeItem("inspirebooks_token");
         localStorage.removeItem("inspirebooks_user");
-        // Re-initialize guest session on logout so user can keep browsing/writing
         initGuestSession();
     };
 
