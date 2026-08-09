@@ -351,21 +351,21 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
             </AnimatePresence>
 
             {/* Header */}
-            <div className="h-16 shrink-0 flex items-center justify-between px-4 md:px-6 border-b border-slate-700/30 bg-slate-950/20 backdrop-blur-md z-10 shadow-sm">
+            <div className="h-16 shrink-0 flex items-center justify-between px-4 md:px-6 border-b border-[#e2d9cd] bg-[#f5f0e8] z-10 shadow-sm">
                 <div className="flex items-center gap-3">
-                    <div className="hidden md:block w-9 h-9 rounded-full overflow-hidden border border-slate-600/50 shadow-sm">
+                    <div className="hidden md:block w-9 h-9 rounded-full overflow-hidden border border-amber-700/50 shadow-sm">
                         <img src={leader.image} alt={leader.name} className="w-full h-full object-cover object-top" />
                     </div>
                     <div className="hidden md:block">
-                        <h2 className="font-bold text-slate-100 leading-tight">{leader.name}</h2>
-                        <p className="text-[11px] text-sky-400/90 font-medium tracking-wide uppercase">{leader.role}</p>
+                        <h2 className="font-bold text-stone-900 leading-tight">{leader.name}</h2>
+                        <p className="text-[11px] text-amber-800 font-semibold tracking-wide uppercase">{leader.role}</p>
                     </div>
                 </div>
                 
                 <div className="flex items-center gap-3">
                     <button 
                         onClick={handleStoryMode}
-                        className="group relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-400 hover:bg-sky-500/20 hover:shadow-[0_0_12px_rgba(14,165,233,0.3)] text-sm font-medium transition-all duration-300 border border-sky-500/20"
+                        className="group relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-100 text-amber-900 hover:bg-amber-200 text-sm font-semibold transition-all duration-300 border border-amber-300 shadow-sm"
                     >
                         <BookOpen className="w-4 h-4" />
                         <span className="hidden sm:inline">Story Mode</span>
@@ -376,8 +376,8 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                         className={cn(
                             "relative p-2 rounded-lg transition-all duration-300 group",
                             isVoiceEnabled 
-                                ? "text-sky-400 bg-sky-500/10 shadow-[0_0_12px_rgba(14,165,233,0.3)] border border-sky-500/20" 
-                                : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 border border-transparent"
+                                ? "text-amber-900 bg-amber-100 border border-amber-300 shadow-sm" 
+                                : "text-stone-500 hover:text-stone-900 hover:bg-stone-200 border border-transparent"
                         )}
                         title={isVoiceEnabled ? "Voice Output On" : "Voice Output Off"}
                     >
@@ -386,7 +386,7 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
 
                     <button 
                         onClick={() => setIsTimelineOpen(!isTimelineOpen)}
-                        className="p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-[0_0_12px_rgba(255,255,255,0.05)] border border-transparent hover:border-slate-700/50"
+                        className="p-2 rounded-lg text-stone-500 hover:text-stone-900 hover:bg-stone-200 transition-all duration-300 border border-transparent"
                         title="View Timeline"
                     >
                         <History className="w-5 h-5" />
@@ -395,40 +395,40 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
             </div>
             
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth scrollbar-hide relative">
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth scrollbar-hide relative bg-[#faf7f2]">
                 <div className="max-w-3xl mx-auto space-y-6">
                     {messages.length === 0 ? (
-                        <div className="h-full flex flex-col items-center justify-center text-center mt-24 text-slate-500">
+                        <div className="h-full flex flex-col items-center justify-center text-center mt-20 text-stone-500">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
                                 className="relative"
                             >
-                                <div className="absolute inset-0 bg-sky-500/20 blur-3xl rounded-full" />
+                                <div className="absolute inset-0 bg-amber-200 blur-3xl rounded-full opacity-50" />
                                 <img
                                     src={leader.image}
                                     alt={leader.name}
-                                    className="relative w-28 h-28 rounded-full object-cover object-top mb-6 border-4 border-slate-700/50 shadow-2xl"
+                                    className="relative w-28 h-28 rounded-full object-cover object-top mb-6 border-4 border-amber-700/60 shadow-xl"
                                 />
                             </motion.div>
                             <motion.h2 
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-                                className="text-3xl font-bold text-slate-200 mb-2 drop-shadow-md"
+                                className="font-serif text-3xl font-bold text-stone-900 mb-2"
                             >
                                 {leader.name}
                             </motion.h2>
                             <motion.p 
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-                                className="text-sky-400 font-medium tracking-wide uppercase text-sm mb-4 drop-shadow-md"
+                                className="text-amber-800 font-bold tracking-wide uppercase text-xs mb-4"
                             >
                                 {leader.role}
                             </motion.p>
                             <motion.p 
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-                                className="max-w-md text-slate-300 leading-relaxed drop-shadow-md"
+                                className="max-w-md text-stone-700 leading-relaxed font-medium"
                             >
-                                "I am {leader.name}. Ask me anything about my life, my vision, and my legacy."
+                                "I am {leader.name}. Ask me anything about my life, my books, my philosophy, and my vision."
                             </motion.p>
                         </div>
                     ) : (
@@ -557,7 +557,7 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                             <button
                                 type="button"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="p-3.5 rounded-full bg-slate-900/60 backdrop-blur-2xl border border-slate-700/60 text-slate-400 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/10 hover:shadow-[0_0_15px_rgba(14,165,233,0.25)] transition-all duration-300 flex items-center justify-center shrink-0"
+                                className="p-3.5 rounded-full bg-white border border-stone-300 text-stone-600 hover:text-amber-900 hover:border-amber-700 hover:bg-amber-50 shadow-sm transition-all duration-300 flex items-center justify-center shrink-0"
                                 title="Attach knowledge file"
                             >
                                 <Plus className="w-5 h-5" />
@@ -577,14 +577,14 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                            className="absolute bottom-16 left-0 z-20 w-56 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden p-2 space-y-1"
+                                            className="absolute bottom-16 left-0 z-20 w-56 bg-white border border-stone-300 rounded-2xl shadow-xl overflow-hidden p-2 space-y-1"
                                         >
                                             {menuOptions.map(option => (
                                                 <button
                                                     key={option.label}
                                                     type="button"
                                                     onClick={() => handleMenuOptionClick(option.accept)}
-                                                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-sky-500/10 text-slate-300 hover:text-sky-400 transition-colors text-sm font-medium text-left"
+                                                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-amber-50 text-stone-700 hover:text-amber-900 transition-colors text-sm font-semibold text-left"
                                                 >
                                                     {option.icon}
                                                     <span>{option.label}</span>
@@ -609,10 +609,10 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                                 }}
                                 placeholder={`Message ${leader.name}...`}
                                 className={cn(
-                                    "w-full bg-slate-900/60 backdrop-blur-2xl border border-slate-700/60 rounded-3xl",
-                                    "pl-5 pr-14 py-4 text-[15px] text-slate-100 placeholder-slate-400",
-                                    "focus:outline-none focus:border-sky-500/60 focus:ring-1 focus:ring-sky-500/50 focus:shadow-[0_0_20px_rgba(14,165,233,0.15)]",
-                                    "resize-none overflow-hidden min-h-[56px] max-h-[150px] shadow-lg transition-all duration-300"
+                                    "w-full bg-white border border-stone-300 rounded-3xl",
+                                    "pl-5 pr-14 py-4 text-[15px] text-stone-900 placeholder-stone-400 font-medium",
+                                    "focus:outline-none focus:border-amber-700 focus:ring-1 focus:ring-amber-700",
+                                    "resize-none overflow-hidden min-h-[56px] max-h-[150px] shadow-sm transition-all duration-300"
                                 )}
                                 rows={1}
                                 style={{ fieldSizing: "content" } as any} 
@@ -623,8 +623,8 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                                 className={cn(
                                     "absolute right-3 bottom-3 p-2 rounded-full transition-all duration-300",
                                     isListening 
-                                        ? "bg-red-500/20 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse" 
-                                        : "text-slate-400 hover:text-sky-400 hover:bg-sky-500/10 hover:shadow-[0_0_10px_rgba(14,165,233,0.2)]"
+                                        ? "bg-red-100 text-red-600 shadow-sm animate-pulse" 
+                                        : "text-stone-400 hover:text-amber-900 hover:bg-amber-100"
                                 )}
                             >
                                 {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
@@ -637,8 +637,8 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                             className={cn(
                                 "shrink-0 mb-1 p-3.5 rounded-full transition-all duration-300",
                                 input.trim() 
-                                    ? "bg-sky-500 text-white hover:bg-sky-400 shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:scale-105" 
-                                    : "bg-slate-800/80 border border-slate-700/50 text-slate-500 backdrop-blur-md",
+                                    ? "bg-gradient-to-r from-amber-700 via-amber-800 to-stone-900 text-white shadow-md hover:scale-105" 
+                                    : "bg-stone-200 text-stone-400 border border-stone-300",
                                 "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                             )}
                         >
@@ -647,8 +647,8 @@ export const ChatWindow = ({ leader, messages, isLoading, input, setInput, onSen
                     </div>
                 </div>
                 
-                <div className="text-center text-xs text-slate-400 mt-3 hidden md:block drop-shadow-md">
-                    HistoryGPT can make mistakes. Consider verifying important information.
+                <div className="text-center text-xs text-stone-500 mt-3 font-medium hidden md:block">
+                    WisdomVault AI Authors can make mistakes. Consider verifying important literary information.
                 </div>
             </div>
 
