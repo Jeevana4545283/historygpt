@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: inspirebooks-backend
+    env: node
+    region: singapore
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: inspirebooks-super-secret-jwt-key-2026
+      - key: DATABASE_URL
+        fromDatabase:
+          name: inspirebooks-db
+          property: connectionString
+
+databases:
+  - name: inspirebooks-db
+    plan: free
+    region: singapore
